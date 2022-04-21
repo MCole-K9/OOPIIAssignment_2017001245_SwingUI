@@ -24,23 +24,39 @@ public class FrmOrder extends JFrame {
     private JButton btnAddToFile;
     private JButton btnClear;
     public JPanel pnlOrder;
+    private JButton btnBack;
 
     public FrmOrder() {
-
-
-
-        List<Book> bookList = new ArrayList<>();
-        //List<Book> bookFileList = new ArrayList<>();
-
 
         btnAddToList.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                Book book = new Book(Integer.parseInt(txtBookID.getText()), txtAuthor.getText(), txtTitle.getText(), txtPublishedDate.getText(), Float.parseFloat(txtPrice.getText()),Integer.parseInt(txtQty.getText()));
 
-                bookList.add(book);
+                try {
+
+                    Book book = new Book(Integer.parseInt(txtBookID.getText()), txtAuthor.getText(), txtTitle.getText(), txtPublishedDate.getText(), Float.parseFloat(txtPrice.getText()),Integer.parseInt(txtQty.getText()));
+
+                    BookRecords.ListRecords.AddRecord(book);
+
+                    JFrame frame = (JFrame) SwingUtilities.getRoot((Component) e.getSource());
+                    CPane.ContentP.addPane(frame.getContentPane());
+                    frame.setContentPane(new FrmViewOrder(book).pnlViewOrder);
+                    frame.setVisible(true);
+
+                }catch (NumberFormatException ex){
+
+                    JOptionPane.showMessageDialog(pnlOrder.getRootPane(), "A Words/Letters were Entered Where Numbers are expected");
+
+                }
+
+            }
+        });
+        btnBack.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+
                 JFrame frame = (JFrame) SwingUtilities.getRoot((Component) e.getSource());
-                frame.setContentPane(new FrmViewOrder(book).pnlViewOrder);
+                frame.setContentPane(CPane.ContentP.getLastPane());
                 frame.setVisible(true);
             }
         });
