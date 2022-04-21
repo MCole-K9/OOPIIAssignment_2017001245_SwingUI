@@ -39,5 +39,14 @@ public class FrmMenu {
                 frame.setVisible(true);
             }
         });
+        btnViewOrderList.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                JFrame frame = (JFrame) SwingUtilities.getRoot((Component) e.getSource());
+                CPane.ContentP.addPane(frame.getContentPane());
+                frame.setContentPane(new FrmListOrders().pnlListOrders);
+                frame.setVisible(true);
+            }
+        });
     }
 }
