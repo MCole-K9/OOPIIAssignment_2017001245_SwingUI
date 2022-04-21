@@ -46,7 +46,6 @@ public class FrmOrder extends JFrame {
                 }catch (NumberFormatException ex){
 
                     JOptionPane.showMessageDialog(pnlOrder.getRootPane(), "Letters were Entered / Black Space Left Where Numbers are expected");
-
                 }
 
             }
