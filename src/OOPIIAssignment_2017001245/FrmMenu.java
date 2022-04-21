@@ -1,6 +1,7 @@
 package OOPIIAssignment_2017001245;
 
 import javax.swing.*;
+import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
@@ -10,19 +11,37 @@ public class FrmMenu {
     private JButton btnViewFileRecords;
     private JButton btnLogout;
     private JButton btnViewOrderList;
-    private JPanel pnlMenu;
+    public JPanel pnlMenu;
 
     public FrmMenu() {
+
+        /*
+        setContentPane(this.pnlMenu);
+        setVisible(true);
+        setSize(600, 400);
+        setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
+*/
         btnOrder.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                // Open Order Form
+                JFrame frame = (JFrame) SwingUtilities.getRoot((Component) e.getSource());
+                frame.setContentPane(new FrmOrder().pnlOrder);
+                frame.setVisible(true);
+//
             }
         });
         btnViewFileRecords.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 //Open form with jtable view (source == file);
+            }
+        });
+        btnLogout.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                JFrame frame = (JFrame) SwingUtilities.getRoot((Component) e.getSource());
+                frame.setContentPane(new FrmLogin().pnlLogin);
+                frame.setVisible(true);
             }
         });
     }
