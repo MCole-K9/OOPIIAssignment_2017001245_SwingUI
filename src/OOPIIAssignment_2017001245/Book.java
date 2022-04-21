@@ -84,6 +84,11 @@ public class Book implements Serializable {
         Quantity = quantity;
     }
 
+    public float CalculateTotal(){
+
+        return (this.Price * this.Quantity);
+    }
+
     @Override
     public String toString() {
         return "Book{" +
