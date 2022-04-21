@@ -1,15 +1,16 @@
 package OOPIIAssignment_2017001245;
 
 import javax.swing.*;
+import javax.swing.text.Utilities;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-public class FrmLogin  extends JFrame{
+public class FrmLogin{
 
     private JTextField txtUserName;
     private JPasswordField txtPassword;
-    private JPanel pnlLogin;
+    public JPanel pnlLogin;
     private JLabel lblPassword;
     private JLabel lblUserName;
     private JLabel lblLogin;
@@ -19,10 +20,12 @@ public class FrmLogin  extends JFrame{
 
 
     public FrmLogin() throws HeadlessException {
-        setContentPane(this.pnlLogin);
+        /* setContentPane(this.pnlLogin);
         setVisible(true);
         setSize(600, 400);
         setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
+        */
+
 
         String UserName = "admin";
         String Password = "matthew123";
@@ -38,21 +41,29 @@ public class FrmLogin  extends JFrame{
 
                 if(txtUserName.getText().equals(UserName) && String.valueOf(txtPassword.getPassword()).equals(Password) ){
 
-                    JOptionPane.showMessageDialog(new JFrame(), "Success");
+                    JOptionPane.showMessageDialog(pnlLogin.getRootPane(), "Success");
+                    //dispose();
+                    JFrame frame = (JFrame) SwingUtilities.getRoot((Component) e.getSource());
+                    frame.setContentPane(new FrmMenu().pnlMenu);
+                    frame.setVisible(true);
 
                 }else{
-
 
                     failedLoginAtmpt[0]++;
 
                     if(failedLoginAtmpt[0] >= maxLoginAtmpt){
 
                         //close application
-                        JOptionPane.showMessageDialog(new JFrame(), "Closing");
+                        JOptionPane.showMessageDialog(pnlLogin.getRootPane(), "Closing");
+
+                        JFrame frame = (JFrame) SwingUtilities.getRoot((Component) e.getSource());
+                        frame.dispose();
+
+
 
                     }else{
 
-                        JOptionPane.showMessageDialog(new JFrame(), "Incorrect UserName or Password\n" +
+                        JOptionPane.showMessageDialog(pnlLogin.getRootPane(), "Incorrect UserName or Password\n" +
                                 "Attempts Remaining: "+ (maxLoginAtmpt - failedLoginAtmpt[0]));
                     }
 
@@ -62,7 +73,14 @@ public class FrmLogin  extends JFrame{
         });
     }
 
+
+
+
     public static void main(String[] args) {
-        FrmLogin frmLogin = new FrmLogin();
+        JFrame frame = new JFrame("Book Order System");
+        frame.setContentPane(new FrmLogin().pnlLogin);
+        frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+        frame.setSize(600, 400);
+        frame.setVisible(true);
     }
 }
