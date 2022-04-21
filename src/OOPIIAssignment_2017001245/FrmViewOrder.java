@@ -1,6 +1,9 @@
 package OOPIIAssignment_2017001245;
 
 import javax.swing.*;
+import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 public class FrmViewOrder {
     private JLabel lblID;
@@ -16,11 +19,12 @@ public class FrmViewOrder {
     private JTextField txtQty;
     private JLabel lblBookOrder;
     private JTextField txtSubtotal;
-    private JButton button1;
+    private JButton btnBack;
     private JButton btnMenu;
     public JPanel pnlViewOrder;
 
     public FrmViewOrder(Book book) {
+
 
         try {
 
@@ -32,14 +36,35 @@ public class FrmViewOrder {
             txtQty.setText(String.valueOf(book.getQuantity()));
             txtSubtotal.setText(String.valueOf(book.CalculateTotal()));
 
-        }catch (NumberFormatException ex){
+        }catch (NullPointerException ex){
 
-            JOptionPane.showMessageDialog(pnlViewOrder.getRootPane(), "A Number Was Entered Where Words are expected");
+            JOptionPane.showMessageDialog(this.pnlViewOrder, "Values in Object NOt Set / Null");
 
         }catch (Exception ex){
-
+            JOptionPane.showMessageDialog(this.pnlViewOrder, "Error Occurred");
         }
 
 
+        btnMenu.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+
+                JFrame frame = (JFrame) SwingUtilities.getRoot((Component) e.getSource());
+                CPane.ContentP.addPane(frame.getContentPane());
+                frame.setContentPane(new FrmMenu().pnlMenu);
+                frame.setVisible(true);
+
+            }
+        });
+
+        btnBack.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+
+                JFrame frame = (JFrame) SwingUtilities.getRoot((Component) e.getSource());
+                frame.setContentPane(CPane.ContentP.getLastPane());
+                frame.setVisible(true);
+            }
+        });
     }
 }
