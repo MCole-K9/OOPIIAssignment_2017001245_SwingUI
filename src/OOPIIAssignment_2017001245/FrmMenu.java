@@ -15,19 +15,13 @@ public class FrmMenu {
 
     public FrmMenu() {
 
-        /*
-        setContentPane(this.pnlMenu);
-        setVisible(true);
-        setSize(600, 400);
-        setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
-*/
         btnOrder.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 JFrame frame = (JFrame) SwingUtilities.getRoot((Component) e.getSource());
+                CPane.ContentP.addPane(frame.getContentPane());
                 frame.setContentPane(new FrmOrder().pnlOrder);
                 frame.setVisible(true);
-//
             }
         });
         btnViewFileRecords.addActionListener(new ActionListener() {
@@ -40,6 +34,7 @@ public class FrmMenu {
             @Override
             public void actionPerformed(ActionEvent e) {
                 JFrame frame = (JFrame) SwingUtilities.getRoot((Component) e.getSource());
+                CPane.ContentP.addPane(frame.getContentPane());
                 frame.setContentPane(new FrmLogin().pnlLogin);
                 frame.setVisible(true);
             }
