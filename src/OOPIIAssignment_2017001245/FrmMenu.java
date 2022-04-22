@@ -27,7 +27,11 @@ public class FrmMenu {
         btnViewFileRecords.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                //Open form with jtable view (source == file);
+
+                JFrame frame = (JFrame) SwingUtilities.getRoot((Component) e.getSource());
+                CPane.ContentP.addPane(frame.getContentPane());
+                frame.setContentPane(new FrmFileOrders().pnlFileOrders);
+                frame.setVisible(true);
             }
         });
         btnLogout.addActionListener(new ActionListener() {
