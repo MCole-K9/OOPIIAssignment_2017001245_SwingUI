@@ -1,5 +1,6 @@
 package OOPIIAssignment_2017001245;
 
+import java.io.*;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -32,10 +33,37 @@ public class BookRecords {
 
             Books.add(book);
         }
-        public static void ReadFromFile(){
+        public static void ReadFromFile() throws IOException, ClassNotFoundException{
 
+            try {
+                FileInputStream file = new FileInputStream("Order.dat");
+                ObjectInputStream objIn = new ObjectInputStream(file);
+
+                Books = (ArrayList<Book>) objIn.readObject();
+
+            }catch (IOException  | ClassNotFoundException ex){
+
+                throw ex;
+            }
         }
-        public static void WriteToFile(){
+        public static void WriteToFile() throws IOException {
+
+            try {
+
+
+                FileOutputStream file = new FileOutputStream("Order.dat");
+
+                ObjectOutputStream objOut = new ObjectOutputStream(file);
+
+                objOut.writeObject(Books);
+
+                file.close();
+                objOut.close();
+
+
+            }catch (IOException ex){
+                throw ex;
+            }
 
         }
     }
