@@ -56,7 +56,7 @@ public class FrmViewOrder {
 
             }
         });
-
+        /*
         btnBack.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -66,5 +66,7 @@ public class FrmViewOrder {
                 frame.setVisible(true);
             }
         });
+
+ */
     }
 }
