@@ -1,4 +1,5 @@
 package OOPIIAssignment_2017001245;
+//Matthew Cole - 2017001245
 
 import javax.swing.*;
 import java.awt.*;
@@ -38,9 +39,12 @@ public class FrmMenu {
             @Override
             public void actionPerformed(ActionEvent e) {
                 JFrame frame = (JFrame) SwingUtilities.getRoot((Component) e.getSource());
+                frame.dispose();
+                /*
                 CPane.ContentP.addPane(frame.getContentPane());
                 frame.setContentPane(new FrmLogin().pnlLogin);
                 frame.setVisible(true);
+                */
             }
         });
         btnViewOrderList.addActionListener(new ActionListener() {

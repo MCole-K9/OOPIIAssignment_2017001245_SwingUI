@@ -1,5 +1,5 @@
 package OOPIIAssignment_2017001245;
-
+//Matthew Cole - 2017001245
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
@@ -61,7 +61,7 @@ public class FrmOrder extends JFrame {
 
                 }catch (NumberFormatException ex){
 
-                    JOptionPane.showMessageDialog(pnlOrder.getRootPane(), "Letters were Entered / Blank Space Left Where Numbers are expected");
+                    JOptionPane.showMessageDialog(pnlOrder.getRootPane(), "Letters were Entered / Blank Space Left Where Numbers are expected" + ex.getMessage());
                 }
 
             }

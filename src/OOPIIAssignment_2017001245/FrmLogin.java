@@ -1,5 +1,5 @@
 package OOPIIAssignment_2017001245;
-
+//Matthew Cole - 2017001245
 import javax.swing.*;
 import javax.swing.text.Utilities;
 import java.awt.*;
@@ -20,11 +20,6 @@ public class FrmLogin{
 
 
     public FrmLogin() throws HeadlessException {
-        /* setContentPane(this.pnlLogin);
-        setVisible(true);
-        setSize(600, 400);
-        setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
-        */
 
 
         String UserName = "admin";

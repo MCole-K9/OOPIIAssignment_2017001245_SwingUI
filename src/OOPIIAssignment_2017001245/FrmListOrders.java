@@ -1,5 +1,5 @@
 package OOPIIAssignment_2017001245;
-
+//Matthew Cole - 2017001245
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
 import java.awt.*;
